@@ -180,11 +180,14 @@ You will see this syntax often used when passing an anonymous function as an arg
 
 h3. Partial application
 
-You can partially apply a function with an underscore, which gives you another function. Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an unnamed magical wildcard. In the context of <code>{ _ + 2 }</code> it means an unnamed parameter. You can use it like so:
+A partial function is only defined for certain values of defined types.
 
 <pre>
-scala> def adder(m: Int, n: Int) = m + n
-adder: (m: Int,n: Int)Int
+scala> val testThis:PartialFunction[Int,String]= { case x if x <= 1 => "This input value defined in this function"}
+scala> testThis.isDefinedAt(1)
+res10: true
+scala> testThis.isDefinedAt(2)
+res11: false
 </pre>
 
 <pre>
